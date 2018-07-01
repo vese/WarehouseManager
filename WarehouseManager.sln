@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseManager", "WarehouseManager\WarehouseManager.csproj", "{3A0916C8-0B1B-415C-B867-A5B04477C811}"
+	ProjectSection(ProjectDependencies) = postProject
+		{33AD6FFE-77D4-4B22-B3A4-270B9E6B9952} = {33AD6FFE-77D4-4B22-B3A4-270B9E6B9952}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMDBService", "WMDBService\WMDBService.csproj", "{33AD6FFE-77D4-4B22-B3A4-270B9E6B9952}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A0916C8-0B1B-415C-B867-A5B04477C811}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A0916C8-0B1B-415C-B867-A5B04477C811}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A0916C8-0B1B-415C-B867-A5B04477C811}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A0916C8-0B1B-415C-B867-A5B04477C811}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33AD6FFE-77D4-4B22-B3A4-270B9E6B9952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33AD6FFE-77D4-4B22-B3A4-270B9E6B9952}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33AD6FFE-77D4-4B22-B3A4-270B9E6B9952}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33AD6FFE-77D4-4B22-B3A4-270B9E6B9952}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0ECD3D71-FA5A-458D-93BF-D0D859B26405}
+	EndGlobalSection
+EndGlobal

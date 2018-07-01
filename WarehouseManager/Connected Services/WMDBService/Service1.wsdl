@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/WMDBService/WMDBService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost/WMDBService/WMDBService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/WMDBService/WMDBService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WMDBService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWMDBService_GetAllSites_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSites" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_GetAllSites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_GetSites_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSites" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_GetSites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_SiteExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:SiteExists" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_SiteExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SiteExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_GetAllHangars_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllHangars" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_GetAllHangars_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllHangarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_GetHangars_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHangars" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_GetHangars_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHangarsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_ModifyHangar_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyHangar" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_ModifyHangar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyHangarResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_GetFreePlacesCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFreePlacesCount" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_GetFreePlacesCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFreePlacesCountResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWMDBService">
+    <wsdl:operation name="GetAllSites">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWMDBService/GetAllSites" message="tns:IWMDBService_GetAllSites_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWMDBService/GetAllSitesResponse" message="tns:IWMDBService_GetAllSites_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSites">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWMDBService/GetSites" message="tns:IWMDBService_GetSites_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWMDBService/GetSitesResponse" message="tns:IWMDBService_GetSites_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SiteExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWMDBService/SiteExists" message="tns:IWMDBService_SiteExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWMDBService/SiteExistsResponse" message="tns:IWMDBService_SiteExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHangars">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWMDBService/GetAllHangars" message="tns:IWMDBService_GetAllHangars_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWMDBService/GetAllHangarsResponse" message="tns:IWMDBService_GetAllHangars_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHangars">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWMDBService/GetHangars" message="tns:IWMDBService_GetHangars_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWMDBService/GetHangarsResponse" message="tns:IWMDBService_GetHangars_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyHangar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWMDBService/ModifyHangar" message="tns:IWMDBService_ModifyHangar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWMDBService/ModifyHangarResponse" message="tns:IWMDBService_ModifyHangar_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFreePlacesCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWMDBService/GetFreePlacesCount" message="tns:IWMDBService_GetFreePlacesCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWMDBService/GetFreePlacesCountResponse" message="tns:IWMDBService_GetFreePlacesCount_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWMDBService" type="tns:IWMDBService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllSites">
+      <soap:operation soapAction="http://tempuri.org/IWMDBService/GetAllSites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSites">
+      <soap:operation soapAction="http://tempuri.org/IWMDBService/GetSites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SiteExists">
+      <soap:operation soapAction="http://tempuri.org/IWMDBService/SiteExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllHangars">
+      <soap:operation soapAction="http://tempuri.org/IWMDBService/GetAllHangars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHangars">
+      <soap:operation soapAction="http://tempuri.org/IWMDBService/GetHangars" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyHangar">
+      <soap:operation soapAction="http://tempuri.org/IWMDBService/ModifyHangar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFreePlacesCount">
+      <soap:operation soapAction="http://tempuri.org/IWMDBService/GetFreePlacesCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IWMDBService" binding="tns:BasicHttpBinding_IWMDBService">
+      <soap:address location="http://localhost/WMDBService/WMDBService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

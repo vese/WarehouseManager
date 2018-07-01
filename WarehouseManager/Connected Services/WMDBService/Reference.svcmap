@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="08461e97-f5e5-498d-8871-cd4a965f44a4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/WMDBService/WMDBService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WMDBService.xsd" MetadataType="Schema" ID="94cee0ee-a794-48e6-b121-221571c59843" SourceId="1" SourceUrl="http://localhost/WMDBService/WMDBService.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="26971653-ec5a-416e-835d-8071875f4758" SourceId="1" SourceUrl="http://localhost/WMDBService/WMDBService.svc?wsdl" />
+    <MetadataFile FileName="WMDBService.disco" MetadataType="Disco" ID="77a433c3-4583-47f7-83eb-79165c280ca5" SourceId="1" SourceUrl="http://localhost/WMDBService/WMDBService.svc?disco" />
+    <MetadataFile FileName="WMDBService1.xsd" MetadataType="Schema" ID="287a5818-a379-4379-83d5-97a87c5a3e58" SourceId="1" SourceUrl="http://localhost/WMDBService/WMDBService.svc?xsd=xsd0" />
+    <MetadataFile FileName="WMDBService2.xsd" MetadataType="Schema" ID="c6c7b11e-e006-4156-ac7d-971bf92c6e6f" SourceId="1" SourceUrl="http://localhost/WMDBService/WMDBService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
