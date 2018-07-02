@@ -5,86 +5,127 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using WMDBService.Models;
 
 namespace WMDBService
 {
     public class Service1 : IWMDBService
     {
+        WarehouseContext db = new WarehouseContext();
+
         public List<Site> GetAllSites()
         {
             List<Site> sites = new List<Site>();
-            for (int i = 0; i < 10; i++)           //здесь выборка из бд должна быть
+            db.sites.ToList().ForEach(e => sites.Add(new Site()
             {
-                sites.Add(new Site()
-                {
-                    Id = i.ToString(),
-                    Empty = false,
-                    Capacity = 200
-                });
-            }
+                Id = e.id,
+                Capacity = e.capacity,
+                Empty = e.empty
+            }));
             return sites;
         }
 
-        public List<Site> GetSites(bool empty, bool full)  //where empty or full
+        public List<Site> GetSites(bool empty, bool full)
         {
             List<Site> sites = new List<Site>();
-            for (int i = 0; i < 10; i++)           //здесь выборка из бд должна быть
+            db.sites.Where(e => (empty || !e.empty) && (full || e.capacity != 0)).ToList().ForEach(e => sites.Add(new Site()
             {
-                sites.Add(new Site()
-                {
-                    Id = i.ToString(),
-                    Empty = empty,
-                    Capacity = 200
-                });
-            }
+                Id = e.id,
+                Capacity = e.capacity,
+                Empty = e.empty
+            }));
             return sites;
         }
 
         public bool SiteExists(string id)
         {
-            return true;//существует запись из site с id
+            foreach (var site in db.sites)
+            {
+                if (site.id == id)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public List<Hangar> GetAllHangars(string siteId)
         {
             List<Hangar> hangars = new List<Hangar>();
-            for (int i = 0; i < 10; i++)           //здесь выборка из бд должна быть
+            db.hangars.Where(e => e.site_id == siteId).ToList().ForEach(e => hangars.Add(new Hangar()
             {
-                hangars.Add(new Hangar()
-                {
-                    Id = i.ToString(),
-                    SiteId = siteId,
-                    Capacity = 20,
-                    Fullness = 10
-                });
-            }
+                Id = e.id,
+                SiteId = e.site_id,
+                Capacity = e.capacity,
+                Fullness = e.fullness
+            }));
             return hangars;
         }
 
-        public List<Hangar> GetHangars(string siteId, bool empty, bool full)  //where empty or full
+        public List<Hangar> GetHangars(string siteId, bool empty, bool full)
         {
             List<Hangar> hangars = new List<Hangar>();
-            for (int i = 0; i < 10; i++)           //здесь выборка из бд должна быть
+            db.hangars.Where(e => e.site_id == siteId && (empty || e.fullness != 0) && (full || e.capacity != e.fullness)).ToList().ForEach(e => hangars.Add(new Hangar()
             {
-                hangars.Add(new Hangar()
-                {
-                    Id = i.ToString(),
-                    SiteId = siteId,
-                    Capacity = 20,
-                    Fullness = empty ? 0 : 10
-                });
-            }
+                Id = e.id,
+                SiteId = e.site_id,
+                Capacity = e.capacity,
+                Fullness = e.fullness
+            }));
             return hangars;
         }
 
         public int GetFreePlacesCount()
         {
-            return 2000;   //возврат суммы capacity у записей из site
+            int places = 0;
+            db.sites.ToList().ForEach(e => places += e.capacity);
+            return places;
         }
 
         public bool ModifyHangar(string id, int N)
         {
-            throw new NotImplementedException();
+            if (N != 0)
+            {
+                foreach (var hangar in db.hangars.ToList())
+                {
+                    if (hangar.id == id)
+                    {
+                        int newFullness = hangar.fullness + N;
+                        if (newFullness >= 0 && newFullness <= hangar.capacity)
+                        {
+                            hangar.fullness = newFullness;
+                            db.sites.Where(e => e.id == hangar.site_id).ToList().FirstOrDefault().capacity -= N;
+                            if (newFullness == 0)
+                            {
+                                bool empty = true;
+                                foreach (var h in db.hangars.ToList())
+                                {
+                                    if (h.site_id == hangar.site_id && h.fullness > 0)
+                                    {
+                                        empty = false;
+                                        break;
+                                    }
+                                }
+                                if (empty)
+                                {
+                                    db.sites.Where(e => e.id == hangar.site_id).FirstOrDefault().empty = true;
+                                }
+                            }
+                            else if (db.sites.Where(e => e.id == hangar.site_id).FirstOrDefault().empty)
+                            {
+                                db.sites.Where(e => e.id == hangar.site_id).FirstOrDefault().empty = false;
+                            }
+                            db.SaveChanges();
+                            return true;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+            return false;
         }
     }
 }
