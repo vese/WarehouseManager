@@ -199,11 +199,17 @@ namespace WarehouseManager.WMDBService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetSites", ReplyAction="http://tempuri.org/IWMDBService/GetSitesResponse")]
         System.Threading.Tasks.Task<WarehouseManager.WMDBService.Site[]> GetSitesAsync(bool empty, bool full);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/SiteExists", ReplyAction="http://tempuri.org/IWMDBService/SiteExistsResponse")]
-        bool SiteExists(string id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/HangarExists", ReplyAction="http://tempuri.org/IWMDBService/HangarExistsResponse")]
+        bool HangarExists(string id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/SiteExists", ReplyAction="http://tempuri.org/IWMDBService/SiteExistsResponse")]
-        System.Threading.Tasks.Task<bool> SiteExistsAsync(string id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/HangarExists", ReplyAction="http://tempuri.org/IWMDBService/HangarExistsResponse")]
+        System.Threading.Tasks.Task<bool> HangarExistsAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetHangar", ReplyAction="http://tempuri.org/IWMDBService/GetHangarResponse")]
+        WarehouseManager.WMDBService.Hangar GetHangar(string hangarId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetHangar", ReplyAction="http://tempuri.org/IWMDBService/GetHangarResponse")]
+        System.Threading.Tasks.Task<WarehouseManager.WMDBService.Hangar> GetHangarAsync(string hangarId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetAllHangars", ReplyAction="http://tempuri.org/IWMDBService/GetAllHangarsResponse")]
         WarehouseManager.WMDBService.Hangar[] GetAllHangars(string siteId);
@@ -273,12 +279,20 @@ namespace WarehouseManager.WMDBService {
             return base.Channel.GetSitesAsync(empty, full);
         }
         
-        public bool SiteExists(string id) {
-            return base.Channel.SiteExists(id);
+        public bool HangarExists(string id) {
+            return base.Channel.HangarExists(id);
         }
         
-        public System.Threading.Tasks.Task<bool> SiteExistsAsync(string id) {
-            return base.Channel.SiteExistsAsync(id);
+        public System.Threading.Tasks.Task<bool> HangarExistsAsync(string id) {
+            return base.Channel.HangarExistsAsync(id);
+        }
+        
+        public WarehouseManager.WMDBService.Hangar GetHangar(string hangarId) {
+            return base.Channel.GetHangar(hangarId);
+        }
+        
+        public System.Threading.Tasks.Task<WarehouseManager.WMDBService.Hangar> GetHangarAsync(string hangarId) {
+            return base.Channel.GetHangarAsync(hangarId);
         }
         
         public WarehouseManager.WMDBService.Hangar[] GetAllHangars(string siteId) {

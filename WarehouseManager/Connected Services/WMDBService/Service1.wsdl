@@ -19,11 +19,17 @@
   <wsdl:message name="IWMDBService_GetSites_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSitesResponse" />
   </wsdl:message>
-  <wsdl:message name="IWMDBService_SiteExists_InputMessage">
-    <wsdl:part name="parameters" element="tns:SiteExists" />
+  <wsdl:message name="IWMDBService_HangarExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:HangarExists" />
   </wsdl:message>
-  <wsdl:message name="IWMDBService_SiteExists_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SiteExistsResponse" />
+  <wsdl:message name="IWMDBService_HangarExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HangarExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_GetHangar_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHangar" />
+  </wsdl:message>
+  <wsdl:message name="IWMDBService_GetHangar_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHangarResponse" />
   </wsdl:message>
   <wsdl:message name="IWMDBService_GetAllHangars_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllHangars" />
@@ -58,9 +64,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IWMDBService/GetSites" message="tns:IWMDBService_GetSites_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IWMDBService/GetSitesResponse" message="tns:IWMDBService_GetSites_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SiteExists">
-      <wsdl:input wsaw:Action="http://tempuri.org/IWMDBService/SiteExists" message="tns:IWMDBService_SiteExists_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IWMDBService/SiteExistsResponse" message="tns:IWMDBService_SiteExists_OutputMessage" />
+    <wsdl:operation name="HangarExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWMDBService/HangarExists" message="tns:IWMDBService_HangarExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWMDBService/HangarExistsResponse" message="tns:IWMDBService_HangarExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHangar">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWMDBService/GetHangar" message="tns:IWMDBService_GetHangar_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWMDBService/GetHangarResponse" message="tns:IWMDBService_GetHangar_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetAllHangars">
       <wsdl:input wsaw:Action="http://tempuri.org/IWMDBService/GetAllHangars" message="tns:IWMDBService_GetAllHangars_InputMessage" />
@@ -99,8 +109,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SiteExists">
-      <soap:operation soapAction="http://tempuri.org/IWMDBService/SiteExists" style="document" />
+    <wsdl:operation name="HangarExists">
+      <soap:operation soapAction="http://tempuri.org/IWMDBService/HangarExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHangar">
+      <soap:operation soapAction="http://tempuri.org/IWMDBService/GetHangar" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

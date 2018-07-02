@@ -14,12 +14,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Site" nillable="true" type="tns:Site" />
-  <xs:complexType name="ArrayOfHangar">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Hangar" nillable="true" type="tns:Hangar" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfHangar" nillable="true" type="tns:ArrayOfHangar" />
   <xs:complexType name="Hangar">
     <xs:sequence>
       <xs:element minOccurs="0" name="Capacity" type="xs:int" />
@@ -29,4 +23,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Hangar" nillable="true" type="tns:Hangar" />
+  <xs:complexType name="ArrayOfHangar">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Hangar" nillable="true" type="tns:Hangar" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHangar" nillable="true" type="tns:ArrayOfHangar" />
 </xs:schema>

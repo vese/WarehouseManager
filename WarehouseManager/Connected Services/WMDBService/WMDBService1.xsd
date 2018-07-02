@@ -28,17 +28,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SiteExists">
+  <xs:element name="HangarExists">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SiteExistsResponse">
+  <xs:element name="HangarExistsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="SiteExistsResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="HangarExistsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHangar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="hangarId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHangarResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WMDBService" minOccurs="0" name="GetHangarResult" nillable="true" type="q3:Hangar" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -52,7 +66,7 @@
   <xs:element name="GetAllHangarsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WMDBService" minOccurs="0" name="GetAllHangarsResult" nillable="true" type="q3:ArrayOfHangar" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WMDBService" minOccurs="0" name="GetAllHangarsResult" nillable="true" type="q4:ArrayOfHangar" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -68,7 +82,7 @@
   <xs:element name="GetHangarsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WMDBService" minOccurs="0" name="GetHangarsResult" nillable="true" type="q4:ArrayOfHangar" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WMDBService" minOccurs="0" name="GetHangarsResult" nillable="true" type="q5:ArrayOfHangar" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -33,7 +33,15 @@ namespace WMDBService
         /// <param name="id"></param>
         /// <returns>True, если существует</returns>
         [OperationContract]
-        bool SiteExists(string id);
+        bool HangarExists(string id);
+
+        /// <summary>
+        /// Получает ангар с указанным id.
+        /// </summary>
+        /// <param name="hangarId">Id ангара</param>
+        /// <returns>Ангар</returns>
+        [OperationContract]
+        Hangar GetHangar(string hangarId);
 
         /// <summary>
         /// Получает список всех ангаров на площадке с указанным id.

@@ -8,6 +8,21 @@ namespace WarehouseManager
 {
     class Program
     {
+        static ushort PlaceContainers(ushort N, WMDBService.WMDBServiceClient wm, bool empty = false, bool full = false)
+        {
+            List<WMDBService.Site> sites = wm.GetSites(empty, full).ToList();
+            for (int i = 0; i < sites.Count && N > 0; i++)
+            {
+                List<WMDBService.Hangar> hangars = wm.GetHangars(sites[i].Id, empty, full).ToList();
+                for (int j = 0; j < hangars.Count && N > 0; j++)
+                {
+                    ushort hN = Math.Min((ushort)(hangars[j].Capacity - hangars[j].Fullness), N);
+                    wm.ModifyHangar(hangars[j].Id, hN);
+                    N -= hN;
+                }
+            }
+            return N;
+        }
         static void Main(string[] args)
         {
             #region consts
@@ -76,14 +91,15 @@ namespace WarehouseManager
                 else if (command.ToLower().StartsWith(StoreCommand + ' '))
                 {
                     bool valid = true;
-                    uint N;
+                    ushort N;
                     string[] comArgs = command.Split(' ');
-                    if (comArgs.Length == 2 && uint.TryParse(comArgs[1], out N))
+                    if (comArgs.Length == 2 && ushort.TryParse(comArgs[1], out N))
                     {
                         int freePlaces = wm.GetFreePlacesCount();
                         if (freePlaces >= N)
                         {
-                            throw new Exception("Не сделано");//алгоритм размещения
+                            N = PlaceContainers(N, wm);
+                            N = PlaceContainers(N, wm, true);
                             Console.WriteLine(ContainersPlacedMessage);
                         }
                         else if (freePlaces == 0)
@@ -109,13 +125,20 @@ namespace WarehouseManager
                 else if (command.ToLower().StartsWith(FreeCommand + ' '))
                 {
                     bool valid = true;
-                    uint N;
+                    ushort N;
                     string[] comArgs = command.Split(' ');
-                    if (comArgs.Length == 3 && uint.TryParse(comArgs[1], out N) && wm.SiteExists(comArgs[2]))
+                    if (comArgs.Length == 3 && ushort.TryParse(comArgs[1], out N) && wm.HangarExists(comArgs[2]))
                     {
-                        throw new Exception("Не сделано");//алгоритм выгрузки
-                        Console.WriteLine(NotEnoughContainersMessage);
-                        Console.WriteLine(ContainersTakenAwayMessage);
+                        WMDBService.Hangar hangar = wm.GetHangar(comArgs[2]);
+                        if (hangar.Fullness < N)
+                        {
+                            Console.WriteLine(NotEnoughContainersMessage);
+                        }
+                        else
+                        {
+                            wm.ModifyHangar(hangar.Id, -N);
+                            Console.WriteLine(ContainersTakenAwayMessage);
+                        }
                     }
                     else
                     {

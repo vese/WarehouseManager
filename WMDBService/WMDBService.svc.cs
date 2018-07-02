@@ -37,16 +37,29 @@ namespace WMDBService
             return sites;
         }
 
-        public bool SiteExists(string id)
+        public bool HangarExists(string id)
         {
-            foreach (var site in db.sites)
+            foreach (var hangar in db.hangars)
             {
-                if (site.id == id)
+                if (hangar.id == id)
                 {
                     return true;
                 }
             }
             return false;
+        }
+
+        public Hangar GetHangar(string hangarId)
+        {
+            Hangar hangar = new Hangar();
+            db.hangars.Where(e => e.id == hangarId).ToList().ForEach(e => 
+            {
+                hangar.Id = e.id;
+                hangar.SiteId = e.site_id;
+                hangar.Capacity = e.capacity;
+                hangar.Fullness = e.fullness;
+            });
+            return hangar;
         }
 
         public List<Hangar> GetAllHangars(string siteId)
