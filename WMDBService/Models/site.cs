@@ -9,11 +9,11 @@ namespace WMDBService.Models
     [Table("site")]
     public partial class site
     {
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        //public site()
-        //{
-        //    hangars = new HashSet<hangar>();
-        //}
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public site()
+        {
+            hangars = new HashSet<hangar>();
+        }
 
         [StringLength(10)]
         public string id { get; set; }
@@ -22,7 +22,7 @@ namespace WMDBService.Models
 
         public int capacity { get; set; }
 
-        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        //public virtual ICollection<hangar> hangars { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<hangar> hangars { get; set; }
     }
 }

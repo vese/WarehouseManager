@@ -20,6 +20,6 @@ namespace WMDBService.Models
 
         public int fullness { get; set; }
 
-        //public virtual site site { get; set; }
+        public virtual site site { get; set; }
     }
 }
