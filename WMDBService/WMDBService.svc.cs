@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -9,19 +10,52 @@ using WMDBService.Models;
 
 namespace WMDBService
 {
+
+    public class New_table
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
+    public class ntContext : DbContext
+    {
+        public ntContext() : base("conn")
+        { }
+
+        public DbSet<New_table> new_tables { get; set; }
+    }
+
     public class Service1 : IWMDBService
     {
         WarehouseContext db = new WarehouseContext();
 
         public List<Site> GetAllSites()
         {
-            List<Site> sites = new List<Site>();
-            db.sites.ToList().ForEach(e => sites.Add(new Site()
+            try
             {
-                Id = e.id,
-                Capacity = e.capacity,
-                Empty = e.empty
-            }));
+                ntContext nt = new ntContext();
+                nt.new_tables.ToList().ForEach(e => { });
+            }
+            catch (Exception e)
+            {
+                var t = "t";
+            }
+
+            List<Site> sites = new List<Site>();
+            try
+            {
+                db.sites.ToList().ForEach(e => sites.Add(new Site()
+                {
+                    Id = e.id,
+                    Capacity = e.capacity,
+                    Empty = e.empty
+                }));
+            }
+            catch (Exception e)
+            {
+                var t = "t";
+            }
             return sites;
         }
 
@@ -52,7 +86,7 @@ namespace WMDBService
         public Hangar GetHangar(string hangarId)
         {
             Hangar hangar = new Hangar();
-            db.hangars.Where(e => e.id == hangarId).ToList().ForEach(e => 
+            db.hangars.Where(e => e.id == hangarId).ToList().ForEach(e =>
             {
                 hangar.Id = e.id;
                 hangar.SiteId = e.site_id;
