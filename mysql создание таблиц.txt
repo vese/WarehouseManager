@@ -1,0 +1,31 @@
+CREATE SCHEMA `warehouse` ;
+
+CREATE TABLE `warehouse`.`site` (
+`id` VARCHAR(10) NOT NULL,
+`empty` BIT(1) NOT NULL,
+`capacity` INT NOT NULL,
+PRIMARY KEY (`id`));
+
+CREATE TABLE `warehouse`.`hangar` (
+  
+`id` VARCHAR(10) NOT NULL,
+  
+`site_id` VARCHAR(10) NOT NULL,
+  
+`capacity` INT NOT NULL DEFAULT 20,
+  
+`fullness` INT NOT NULL DEFAULT 0,
+  
+PRIMARY KEY (`id`),
+  
+INDEX `site_id_idx` (`site_id` ASC) VISIBLE,
+  
+CONSTRAINT `site_id_f`
+    
+FOREIGN KEY (`site_id`)
+    
+REFERENCES `warehouse`.`site` (`id`)
+    
+ON DELETE CASCADE
+    
+ON UPDATE CASCADE);
