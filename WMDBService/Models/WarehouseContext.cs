@@ -13,28 +13,7 @@ namespace WMDBService.Models
         {
         }
 
-        public virtual DbSet<hangar> hangars { get; set; }
-        public virtual DbSet<site> sites { get; set; }
-
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<hangar>()
-        //        .Property(e => e.id)
-        //        .IsUnicode(false);
-
-        //    modelBuilder.Entity<hangar>()
-        //        .Property(e => e.site_id)
-        //        .IsUnicode(false);
-
-        //    modelBuilder.Entity<site>()
-        //        .Property(e => e.id)
-        //        .IsUnicode(false);
-
-        //    modelBuilder.Entity<site>()
-        //        .HasMany(e => e.hangars)
-        //        .WithRequired(e => e.site)
-        //        .HasForeignKey(e => e.site_id)
-        //        .WillCascadeOnDelete(false);
-        //}
+        public virtual DbSet<Hangar> hangars { get; set; }
+        public virtual DbSet<Site> sites { get; set; }
     }
 }
