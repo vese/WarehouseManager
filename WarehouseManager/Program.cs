@@ -51,6 +51,7 @@ namespace WarehouseManager
             #endregion
 
             WMDBService.WMDBServiceClient wm = new WMDBService.WMDBServiceClient(); //Ссылка на службу для работы с бд
+            
             string command = "";
             bool needEnterSuggestion = true;
 

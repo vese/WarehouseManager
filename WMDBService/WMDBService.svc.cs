@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -52,7 +53,7 @@ namespace WMDBService
         public Hangar GetHangar(string hangarId)
         {
             Hangar hangar = new Hangar();
-            db.hangars.Where(e => e.id == hangarId).ToList().ForEach(e => 
+            db.hangars.Where(e => e.id == hangarId).ToList().ForEach(e =>
             {
                 hangar.Id = e.id;
                 hangar.SiteId = e.site_id;
