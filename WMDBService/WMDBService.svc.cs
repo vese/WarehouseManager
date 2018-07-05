@@ -10,7 +10,7 @@ using WMDBService.Models;
 
 namespace WMDBService
 {
-    public class Service1 : IWMDBService
+    public class WMDBService : IWMDBService
     {
         WarehouseContext db = new WarehouseContext();
 
@@ -40,14 +40,7 @@ namespace WMDBService
 
         public bool HangarExists(string id)
         {
-            foreach (var hangar in db.hangars)
-            {
-                if (hangar.id == id)
-                {
-                    return true;
-                }
-            }
-            return false;
+            return db.hangars.FirstOrDefault(e => e.id == id) != null;
         }
 
         public Hangar GetHangar(string hangarId)

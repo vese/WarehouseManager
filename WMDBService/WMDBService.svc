@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="WMDBService.Service1" CodeBehind="WMDBService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WMDBService.WMDBService" CodeBehind="WMDBService.svc.cs" %>
