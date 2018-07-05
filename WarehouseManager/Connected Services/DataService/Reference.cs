@@ -8,14 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WarehouseManager.WMDBService {
+namespace Warehouse.ConsoleClient.DataService {
     using System.Runtime.Serialization;
     using System;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Site", Namespace="http://schemas.datacontract.org/2004/07/WMDBService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Site", Namespace="http://schemas.datacontract.org/2004/07/DataService")]
     [System.SerializableAttribute()]
     public partial class Site : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -92,7 +92,7 @@ namespace WarehouseManager.WMDBService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Hangar", Namespace="http://schemas.datacontract.org/2004/07/WMDBService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Hangar", Namespace="http://schemas.datacontract.org/2004/07/DataService")]
     [System.SerializableAttribute()]
     public partial class Hangar : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -184,98 +184,98 @@ namespace WarehouseManager.WMDBService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WMDBService.IWMDBService")]
-    public interface IWMDBService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DataService.IDataService")]
+    public interface IDataService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetAllSites", ReplyAction="http://tempuri.org/IWMDBService/GetAllSitesResponse")]
-        WarehouseManager.WMDBService.Site[] GetAllSites();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetAllSites", ReplyAction="http://tempuri.org/IDataService/GetAllSitesResponse")]
+        Warehouse.ConsoleClient.DataService.Site[] GetAllSites();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetAllSites", ReplyAction="http://tempuri.org/IWMDBService/GetAllSitesResponse")]
-        System.Threading.Tasks.Task<WarehouseManager.WMDBService.Site[]> GetAllSitesAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetAllSites", ReplyAction="http://tempuri.org/IDataService/GetAllSitesResponse")]
+        System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Site[]> GetAllSitesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetSites", ReplyAction="http://tempuri.org/IWMDBService/GetSitesResponse")]
-        WarehouseManager.WMDBService.Site[] GetSites(bool empty, bool full);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetSites", ReplyAction="http://tempuri.org/IDataService/GetSitesResponse")]
+        Warehouse.ConsoleClient.DataService.Site[] GetSites(bool empty, bool full);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetSites", ReplyAction="http://tempuri.org/IWMDBService/GetSitesResponse")]
-        System.Threading.Tasks.Task<WarehouseManager.WMDBService.Site[]> GetSitesAsync(bool empty, bool full);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetSites", ReplyAction="http://tempuri.org/IDataService/GetSitesResponse")]
+        System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Site[]> GetSitesAsync(bool empty, bool full);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/HangarExists", ReplyAction="http://tempuri.org/IWMDBService/HangarExistsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/HangarExists", ReplyAction="http://tempuri.org/IDataService/HangarExistsResponse")]
         bool HangarExists(string id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/HangarExists", ReplyAction="http://tempuri.org/IWMDBService/HangarExistsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/HangarExists", ReplyAction="http://tempuri.org/IDataService/HangarExistsResponse")]
         System.Threading.Tasks.Task<bool> HangarExistsAsync(string id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetHangar", ReplyAction="http://tempuri.org/IWMDBService/GetHangarResponse")]
-        WarehouseManager.WMDBService.Hangar GetHangar(string hangarId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetHangar", ReplyAction="http://tempuri.org/IDataService/GetHangarResponse")]
+        Warehouse.ConsoleClient.DataService.Hangar GetHangar(string hangarId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetHangar", ReplyAction="http://tempuri.org/IWMDBService/GetHangarResponse")]
-        System.Threading.Tasks.Task<WarehouseManager.WMDBService.Hangar> GetHangarAsync(string hangarId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetHangar", ReplyAction="http://tempuri.org/IDataService/GetHangarResponse")]
+        System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Hangar> GetHangarAsync(string hangarId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetAllHangars", ReplyAction="http://tempuri.org/IWMDBService/GetAllHangarsResponse")]
-        WarehouseManager.WMDBService.Hangar[] GetAllHangars(string siteId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetAllHangars", ReplyAction="http://tempuri.org/IDataService/GetAllHangarsResponse")]
+        Warehouse.ConsoleClient.DataService.Hangar[] GetAllHangars(string siteId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetAllHangars", ReplyAction="http://tempuri.org/IWMDBService/GetAllHangarsResponse")]
-        System.Threading.Tasks.Task<WarehouseManager.WMDBService.Hangar[]> GetAllHangarsAsync(string siteId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetAllHangars", ReplyAction="http://tempuri.org/IDataService/GetAllHangarsResponse")]
+        System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Hangar[]> GetAllHangarsAsync(string siteId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetHangars", ReplyAction="http://tempuri.org/IWMDBService/GetHangarsResponse")]
-        WarehouseManager.WMDBService.Hangar[] GetHangars(string siteId, bool empty, bool full);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetHangars", ReplyAction="http://tempuri.org/IDataService/GetHangarsResponse")]
+        Warehouse.ConsoleClient.DataService.Hangar[] GetHangars(string siteId, bool empty, bool full);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetHangars", ReplyAction="http://tempuri.org/IWMDBService/GetHangarsResponse")]
-        System.Threading.Tasks.Task<WarehouseManager.WMDBService.Hangar[]> GetHangarsAsync(string siteId, bool empty, bool full);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetHangars", ReplyAction="http://tempuri.org/IDataService/GetHangarsResponse")]
+        System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Hangar[]> GetHangarsAsync(string siteId, bool empty, bool full);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/ModifyHangar", ReplyAction="http://tempuri.org/IWMDBService/ModifyHangarResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/ModifyHangar", ReplyAction="http://tempuri.org/IDataService/ModifyHangarResponse")]
         bool ModifyHangar(string id, int N);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/ModifyHangar", ReplyAction="http://tempuri.org/IWMDBService/ModifyHangarResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/ModifyHangar", ReplyAction="http://tempuri.org/IDataService/ModifyHangarResponse")]
         System.Threading.Tasks.Task<bool> ModifyHangarAsync(string id, int N);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetFreePlacesCount", ReplyAction="http://tempuri.org/IWMDBService/GetFreePlacesCountResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetFreePlacesCount", ReplyAction="http://tempuri.org/IDataService/GetFreePlacesCountResponse")]
         int GetFreePlacesCount();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IWMDBService/GetFreePlacesCount", ReplyAction="http://tempuri.org/IWMDBService/GetFreePlacesCountResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetFreePlacesCount", ReplyAction="http://tempuri.org/IDataService/GetFreePlacesCountResponse")]
         System.Threading.Tasks.Task<int> GetFreePlacesCountAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IWMDBServiceChannel : WarehouseManager.WMDBService.IWMDBService, System.ServiceModel.IClientChannel {
+    public interface IDataServiceChannel : Warehouse.ConsoleClient.DataService.IDataService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class WMDBServiceClient : System.ServiceModel.ClientBase<WarehouseManager.WMDBService.IWMDBService>, WarehouseManager.WMDBService.IWMDBService {
+    public partial class DataServiceClient : System.ServiceModel.ClientBase<Warehouse.ConsoleClient.DataService.IDataService>, Warehouse.ConsoleClient.DataService.IDataService {
         
-        public WMDBServiceClient() {
+        public DataServiceClient() {
         }
         
-        public WMDBServiceClient(string endpointConfigurationName) : 
+        public DataServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public WMDBServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public DataServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public WMDBServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public DataServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public WMDBServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public DataServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public WarehouseManager.WMDBService.Site[] GetAllSites() {
+        public Warehouse.ConsoleClient.DataService.Site[] GetAllSites() {
             return base.Channel.GetAllSites();
         }
         
-        public System.Threading.Tasks.Task<WarehouseManager.WMDBService.Site[]> GetAllSitesAsync() {
+        public System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Site[]> GetAllSitesAsync() {
             return base.Channel.GetAllSitesAsync();
         }
         
-        public WarehouseManager.WMDBService.Site[] GetSites(bool empty, bool full) {
+        public Warehouse.ConsoleClient.DataService.Site[] GetSites(bool empty, bool full) {
             return base.Channel.GetSites(empty, full);
         }
         
-        public System.Threading.Tasks.Task<WarehouseManager.WMDBService.Site[]> GetSitesAsync(bool empty, bool full) {
+        public System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Site[]> GetSitesAsync(bool empty, bool full) {
             return base.Channel.GetSitesAsync(empty, full);
         }
         
@@ -287,27 +287,27 @@ namespace WarehouseManager.WMDBService {
             return base.Channel.HangarExistsAsync(id);
         }
         
-        public WarehouseManager.WMDBService.Hangar GetHangar(string hangarId) {
+        public Warehouse.ConsoleClient.DataService.Hangar GetHangar(string hangarId) {
             return base.Channel.GetHangar(hangarId);
         }
         
-        public System.Threading.Tasks.Task<WarehouseManager.WMDBService.Hangar> GetHangarAsync(string hangarId) {
+        public System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Hangar> GetHangarAsync(string hangarId) {
             return base.Channel.GetHangarAsync(hangarId);
         }
         
-        public WarehouseManager.WMDBService.Hangar[] GetAllHangars(string siteId) {
+        public Warehouse.ConsoleClient.DataService.Hangar[] GetAllHangars(string siteId) {
             return base.Channel.GetAllHangars(siteId);
         }
         
-        public System.Threading.Tasks.Task<WarehouseManager.WMDBService.Hangar[]> GetAllHangarsAsync(string siteId) {
+        public System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Hangar[]> GetAllHangarsAsync(string siteId) {
             return base.Channel.GetAllHangarsAsync(siteId);
         }
         
-        public WarehouseManager.WMDBService.Hangar[] GetHangars(string siteId, bool empty, bool full) {
+        public Warehouse.ConsoleClient.DataService.Hangar[] GetHangars(string siteId, bool empty, bool full) {
             return base.Channel.GetHangars(siteId, empty, full);
         }
         
-        public System.Threading.Tasks.Task<WarehouseManager.WMDBService.Hangar[]> GetHangarsAsync(string siteId, bool empty, bool full) {
+        public System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Hangar[]> GetHangarsAsync(string siteId, bool empty, bool full) {
             return base.Channel.GetHangarsAsync(siteId, empty, full);
         }
         

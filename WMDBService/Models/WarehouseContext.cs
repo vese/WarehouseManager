@@ -1,4 +1,4 @@
-namespace WMDBService.Models
+namespace DataService.Models
 {
     using System;
     using System.Data.Entity;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost/WMDBService/WMDBService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WMDBService" />
+  <xs:import schemaLocation="http://localhost/DataService/DataService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataService" />
   <xs:element name="GetAllSites">
     <xs:complexType>
       <xs:sequence />
@@ -9,7 +9,7 @@
   <xs:element name="GetAllSitesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WMDBService" minOccurs="0" name="GetAllSitesResult" nillable="true" type="q1:ArrayOfSite" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DataService" minOccurs="0" name="GetAllSitesResult" nillable="true" type="q1:ArrayOfSite" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -24,7 +24,7 @@
   <xs:element name="GetSitesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WMDBService" minOccurs="0" name="GetSitesResult" nillable="true" type="q2:ArrayOfSite" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DataService" minOccurs="0" name="GetSitesResult" nillable="true" type="q2:ArrayOfSite" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -52,7 +52,7 @@
   <xs:element name="GetHangarResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WMDBService" minOccurs="0" name="GetHangarResult" nillable="true" type="q3:Hangar" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DataService" minOccurs="0" name="GetHangarResult" nillable="true" type="q3:Hangar" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -66,7 +66,7 @@
   <xs:element name="GetAllHangarsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WMDBService" minOccurs="0" name="GetAllHangarsResult" nillable="true" type="q4:ArrayOfHangar" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DataService" minOccurs="0" name="GetAllHangarsResult" nillable="true" type="q4:ArrayOfHangar" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -82,7 +82,7 @@
   <xs:element name="GetHangarsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WMDBService" minOccurs="0" name="GetHangarsResult" nillable="true" type="q5:ArrayOfHangar" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DataService" minOccurs="0" name="GetHangarsResult" nillable="true" type="q5:ArrayOfHangar" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

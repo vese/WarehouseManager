@@ -3,12 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WarehouseManager", "WarehouseManager\WarehouseManager.csproj", "{3A0916C8-0B1B-415C-B867-A5B04477C811}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.ConsoleClient", "WarehouseManager\Warehouse.ConsoleClient.csproj", "{3A0916C8-0B1B-415C-B867-A5B04477C811}"
 	ProjectSection(ProjectDependencies) = postProject
 		{33AD6FFE-77D4-4B22-B3A4-270B9E6B9952} = {33AD6FFE-77D4-4B22-B3A4-270B9E6B9952}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WMDBService", "WMDBService\WMDBService.csproj", "{33AD6FFE-77D4-4B22-B3A4-270B9E6B9952}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.DataService", "WMDBService\Warehouse.DataService.csproj", "{33AD6FFE-77D4-4B22-B3A4-270B9E6B9952}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.Data", "Warehouse.Data\Warehouse.Data.csproj", "{B8034C9C-8299-4F73-BEAC-F21B64752836}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +26,10 @@ Global
 		{33AD6FFE-77D4-4B22-B3A4-270B9E6B9952}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33AD6FFE-77D4-4B22-B3A4-270B9E6B9952}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33AD6FFE-77D4-4B22-B3A4-270B9E6B9952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8034C9C-8299-4F73-BEAC-F21B64752836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8034C9C-8299-4F73-BEAC-F21B64752836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8034C9C-8299-4F73-BEAC-F21B64752836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8034C9C-8299-4F73-BEAC-F21B64752836}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

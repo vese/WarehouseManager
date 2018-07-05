@@ -6,10 +6,10 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace WMDBService
+namespace DataService
 {
     [ServiceContract]
-    public interface IWMDBService
+    public interface IDataService
     {
         /// <summary>
         /// Получает из бд список всех площадок.

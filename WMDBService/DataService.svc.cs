@@ -6,11 +6,11 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using WMDBService.Models;
+using DataService.Models;
 
-namespace WMDBService
+namespace DataService
 {
-    public class WMDBService : IWMDBService
+    public class DataService : IDataService
     {
         WarehouseContext db = new WarehouseContext();
 

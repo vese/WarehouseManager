@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WarehouseManager
+namespace Warehouse.ConsoleClient
 {
     class Program
     {
-        static ushort PlaceContainers(ushort N, WMDBService.WMDBServiceClient wm, bool empty = false, bool full = false)
+        static ushort PlaceContainers(ushort N, DataService.DataServiceClient wm, bool empty = false, bool full = false)
         {
-            List<WMDBService.Site> sites = wm.GetSites(empty, full).ToList();
+            List<DataService.Site> sites = wm.GetSites(empty, full).ToList();
             for (int i = 0; i < sites.Count && N > 0; i++)
             {
-                List<WMDBService.Hangar> hangars = wm.GetHangars(sites[i].Id, empty, full).ToList();
+                List<DataService.Hangar> hangars = wm.GetHangars(sites[i].Id, empty, full).ToList();
                 for (int j = 0; j < hangars.Count && N > 0; j++)
                 {
                     ushort hN = Math.Min((ushort)(hangars[j].Capacity - hangars[j].Fullness), N);
@@ -50,7 +50,7 @@ namespace WarehouseManager
             string ColumnHeader = $"{"Site ID",-ColumnWidth}{"Hangar ID",-ColumnWidth}{"Hangar capacity",-ColumnWidth}{"Stored containers",-ColumnWidth}";
             #endregion
 
-            WMDBService.WMDBServiceClient wm = new WMDBService.WMDBServiceClient(); //Ссылка на службу для работы с бд
+            DataService.DataServiceClient wm = new DataService.DataServiceClient(); //Ссылка на службу для работы с бд
             
             string command = "";
             bool needEnterSuggestion = true;
@@ -130,7 +130,7 @@ namespace WarehouseManager
                     string[] comArgs = command.Split(' ');
                     if (comArgs.Length == 3 && ushort.TryParse(comArgs[1], out N) && wm.HangarExists(comArgs[2]))
                     {
-                        WMDBService.Hangar hangar = wm.GetHangar(comArgs[2]);
+                        DataService.Hangar hangar = wm.GetHangar(comArgs[2]);
                         if (hangar.Fullness < N)
                         {
                             Console.WriteLine(NotEnoughContainersMessage);

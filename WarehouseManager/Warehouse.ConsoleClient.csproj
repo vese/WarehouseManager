@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3A0916C8-0B1B-415C-B867-A5B04477C811}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>WarehouseManager</RootNamespace>
-    <AssemblyName>WarehouseManager</AssemblyName>
+    <RootNamespace>Warehouse.ConsoleClient</RootNamespace>
+    <AssemblyName>Warehouse.ConsoleClient</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\WMDBService\Reference.cs">
+    <Compile Include="Connected Services\DataService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -53,43 +53,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Connected Services\WMDBService\Service1.wsdl" />
-    <None Include="Connected Services\WMDBService\WarehouseManager.WMDBService.Hangar.datasource">
+    <None Include="Connected Services\DataService\DataService.wsdl" />
+    <None Include="Connected Services\DataService\DataService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataService\DataService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataService\DataService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\DataService\Warehouse.ConsoleClient.DataService.Hangar.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\WMDBService\WarehouseManager.WMDBService.Site.datasource">
+    <None Include="Connected Services\DataService\Warehouse.ConsoleClient.DataService.Site.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\WMDBService\WMDBService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WMDBService\WMDBService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\WMDBService\WMDBService2.xsd">
-      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\WMDBService\" />
+    <WCFMetadataStorage Include="Connected Services\DataService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\WMDBService\WMDBService.disco" />
+    <None Include="Connected Services\DataService\DataService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\WMDBService\configuration91.svcinfo" />
+    <None Include="Connected Services\DataService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\WMDBService\configuration.svcinfo" />
+    <None Include="Connected Services\DataService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\WMDBService\Reference.svcmap">
+    <None Include="Connected Services\DataService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
