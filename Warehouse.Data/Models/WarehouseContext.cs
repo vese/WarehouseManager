@@ -1,4 +1,4 @@
-namespace DataService.Models
+namespace Data.Models
 {
     using System;
     using System.Data.Entity;

@@ -86,16 +86,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Hangar.cs" />
-    <Compile Include="Models\Site.cs" />
-    <Compile Include="Models\WarehouseContext.cs" />
     <Compile Include="DataService.svc.cs">
       <DependentUpon>DataService.svc</DependentUpon>
     </Compile>
     <Compile Include="IDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Warehouse.Data\Warehouse.Data.csproj">
+      <Project>{b8034c9c-8299-4f73-beac-f21b64752836}</Project>
+      <Name>Warehouse.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">

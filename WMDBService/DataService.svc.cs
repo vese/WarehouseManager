@@ -1,23 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using DataService.Models;
+using Warehouse.Data;
 
 namespace DataService
 {
     public class DataService : IDataService
     {
-        WarehouseContext db = new WarehouseContext();
+        static void LogException(string type, string errorText, string callStack, string time)
+        {
+
+        }
+        DataFunctions.LogExceptionFunction log = new DataFunctions.LogExceptionFunction(LogException);
 
         public List<Site> GetAllSites()
         {
+            return GetSites();
+        }
+
+        public List<Site> GetSites(bool empty = true, bool full = true)
+        {
             List<Site> sites = new List<Site>();
-            db.sites.ToList().ForEach(e => sites.Add(new Site()
+            DataFunctions.GetSites(empty, full, log).ForEach(e => sites.Add(new Site()
             {
                 Id = e.id,
                 Capacity = e.capacity,
@@ -26,53 +34,32 @@ namespace DataService
             return sites;
         }
 
-        public List<Site> GetSites(bool empty, bool full)
+        public bool HangarExists(string hangarId)
         {
-            List<Site> sites = new List<Site>();
-            db.sites.Where(e => (empty || !e.empty) && (full || e.capacity != 0)).ToList().ForEach(e => sites.Add(new Site()
-            {
-                Id = e.id,
-                Capacity = e.capacity,
-                Empty = e.empty
-            }));
-            return sites;
-        }
-
-        public bool HangarExists(string id)
-        {
-            return db.hangars.FirstOrDefault(e => e.id == id) != null;
+            return DataFunctions.GetHangar(hangarId, log) != null;
         }
 
         public Hangar GetHangar(string hangarId)
         {
-            Hangar hangar = new Hangar();
-            db.hangars.Where(e => e.id == hangarId).ToList().ForEach(e =>
+            var h = DataFunctions.GetHangar(hangarId, log);
+            return h == null ? null : new Hangar()
             {
-                hangar.Id = e.id;
-                hangar.SiteId = e.site_id;
-                hangar.Capacity = e.capacity;
-                hangar.Fullness = e.fullness;
-            });
-            return hangar;
+                Id = h.id,
+                SiteId = h.site_id,
+                Capacity = h.capacity,
+                Fullness = h.fullness
+            };
         }
 
         public List<Hangar> GetAllHangars(string siteId)
         {
-            List<Hangar> hangars = new List<Hangar>();
-            db.hangars.Where(e => e.site_id == siteId).ToList().ForEach(e => hangars.Add(new Hangar()
-            {
-                Id = e.id,
-                SiteId = e.site_id,
-                Capacity = e.capacity,
-                Fullness = e.fullness
-            }));
-            return hangars;
+            return GetHangars(siteId);
         }
 
-        public List<Hangar> GetHangars(string siteId, bool empty, bool full)
+        public List<Hangar> GetHangars(string siteId, bool empty = true, bool full = true)
         {
             List<Hangar> hangars = new List<Hangar>();
-            db.hangars.Where(e => e.site_id == siteId && (empty || e.fullness != 0) && (full || e.capacity != e.fullness)).ToList().ForEach(e => hangars.Add(new Hangar()
+            DataFunctions.GetHangars(siteId, empty, full, log).ForEach(e => hangars.Add(new Hangar()
             {
                 Id = e.id,
                 SiteId = e.site_id,
@@ -84,53 +71,14 @@ namespace DataService
 
         public int GetFreePlacesCount()
         {
-            int places = 0;
-            db.sites.ToList().ForEach(e => places += e.capacity);
-            return places;
+            return DataFunctions.GetSites(true, false, log).Sum(e => e.capacity);
         }
 
         public bool ModifyHangar(string id, int N)
         {
             if (N != 0)
             {
-                foreach (var hangar in db.hangars.ToList())
-                {
-                    if (hangar.id == id)
-                    {
-                        int newFullness = hangar.fullness + N;
-                        if (newFullness >= 0 && newFullness <= hangar.capacity)
-                        {
-                            hangar.fullness = newFullness;
-                            db.sites.FirstOrDefault(e => e.id == hangar.site_id).capacity -= N;
-                            if (newFullness == 0)
-                            {
-                                bool empty = true;
-                                foreach (var h in db.hangars.ToList())
-                                {
-                                    if (h.site_id == hangar.site_id && h.fullness > 0)
-                                    {
-                                        empty = false;
-                                        break;
-                                    }
-                                }
-                                if (empty)
-                                {
-                                    db.sites.FirstOrDefault(e => e.id == hangar.site_id).empty = true;
-                                }
-                            }
-                            else if (db.sites.FirstOrDefault(e => e.id == hangar.site_id).empty)
-                            {
-                                db.sites.FirstOrDefault(e => e.id == hangar.site_id).empty = false;
-                            }
-                            db.SaveChanges();
-                            return true;
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                }
+                return DataFunctions.ModifyHangar(id, N, log);
             }
             return false;
         }

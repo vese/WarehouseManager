@@ -1,4 +1,4 @@
-namespace DataService.Models
+namespace Data.Models
 {
     using System;
     using System.Collections.Generic;
@@ -6,13 +6,15 @@ namespace DataService.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("site")]
-    public partial class Site
+    [Table("hangar")]
+    public partial class Hangar
     {
         public string id { get; set; }
 
-        public bool empty { get; set; }
+        public string site_id { get; set; }
 
         public int capacity { get; set; }
+
+        public int fullness { get; set; }
     }
 }
