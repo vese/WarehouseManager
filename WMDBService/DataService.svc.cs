@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -13,7 +14,16 @@ namespace DataService
     {
         static void LogException(string type, string errorText, string callStack, string time)
         {
-
+            var dir = Directory.GetCurrentDirectory();
+            using (StreamWriter sw = new StreamWriter(Settings.LogFileName, true))
+            {
+                sw.WriteLine(new string('-', 10));
+                sw.WriteLine(type);
+                sw.WriteLine(errorText);
+                sw.WriteLine(callStack);
+                sw.WriteLine(time);
+                sw.WriteLine(new string('-', 10));
+            }
         }
         DataFunctions.LogExceptionFunction log = new DataFunctions.LogExceptionFunction(LogException);
 
