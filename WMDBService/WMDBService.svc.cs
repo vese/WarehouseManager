@@ -101,7 +101,7 @@ namespace WMDBService
                         if (newFullness >= 0 && newFullness <= hangar.capacity)
                         {
                             hangar.fullness = newFullness;
-                            db.sites.Where(e => e.id == hangar.site_id).ToList().FirstOrDefault().capacity -= N;
+                            db.sites.FirstOrDefault(e => e.id == hangar.site_id).capacity -= N;
                             if (newFullness == 0)
                             {
                                 bool empty = true;
@@ -115,12 +115,12 @@ namespace WMDBService
                                 }
                                 if (empty)
                                 {
-                                    db.sites.Where(e => e.id == hangar.site_id).FirstOrDefault().empty = true;
+                                    db.sites.FirstOrDefault(e => e.id == hangar.site_id).empty = true;
                                 }
                             }
-                            else if (db.sites.Where(e => e.id == hangar.site_id).FirstOrDefault().empty)
+                            else if (db.sites.FirstOrDefault(e => e.id == hangar.site_id).empty)
                             {
-                                db.sites.Where(e => e.id == hangar.site_id).FirstOrDefault().empty = false;
+                                db.sites.FirstOrDefault(e => e.id == hangar.site_id).empty = false;
                             }
                             db.SaveChanges();
                             return true;
