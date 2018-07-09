@@ -2,6 +2,6 @@
 {
     public static class Settings
     {
-        public static string LogFileName = "log.txt";
+        public static string LogFileName = "WarehouseLog.txt";
     }
 }

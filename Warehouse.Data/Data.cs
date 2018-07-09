@@ -21,7 +21,7 @@ namespace Warehouse.Data
             catch (Exception e)
             {
                 LogException(e.GetType().ToString(), e.Message, e.StackTrace, DateTime.Now.ToString());
-                return new List<Site>();
+                return null;
             }
         }
 
@@ -53,7 +53,7 @@ namespace Warehouse.Data
             catch (Exception e)
             {
                 LogException(e.GetType().ToString(), e.Message, e.StackTrace, DateTime.Now.ToString());
-                return new List<Hangar>();
+                return null;
             }
         }
 
