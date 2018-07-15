@@ -1,26 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Warehouse.ConsoleClient
 {
     class Program
     {
-        static ushort PlaceContainers(ushort N, DataService.DataServiceClient wm, bool empty = false, bool full = false)
-        {
-            List<DataService.Site> sites = wm.GetSites(empty, full).ToList();
-            for (int i = 0; i < sites.Count && N > 0; i++)
-            {
-                List<DataService.Hangar> hangars = wm.GetHangars(sites[i].Id, empty, full).ToList();
-                for (int j = 0; j < hangars.Count && N > 0; j++)
-                {
-                    ushort hN = Math.Min((ushort)(hangars[j].Capacity - hangars[j].Fullness), N);
-                    wm.ModifyHangar(hangars[j].Id, hN);
-                    N -= hN;
-                }
-            }
-            return N;
-        }
         static void Main(string[] args)
         {
             #region consts
@@ -32,26 +15,19 @@ namespace Warehouse.ConsoleClient
             const int CommandsLength = 18;
             const string EnterSuggestion = "Please, enter a command. Enter \"" + HelpCommand + "\" to get all commands' info.",
                 UnknownCommandMessage = "Unknown command! Please, enter command again.",
-                InvalidArgumentsMessage = "Invalid argumets! Try again.",
-                WarehouseIsFilledMessage = "Warehouse is filled.",
-                CanNotPlaceContainersMessage = "There is not enough free place in warehouse.",
-                ContainersPlacedMessage = "Containers are placed in the warehouse.",
-                ContainersTakenAwayMessage = "Containers were taken away.",
-                NotEnoughContainersMessage = "There are not enough containers in the hangar.";
+                InvalidArgumentsMessage = "Invalid argumets! Try again.";
             string HelpMessage = "Commands' info:" + Environment.NewLine +
                 $"{HelpCommand,-CommandsLength}Shows commands' info." + Environment.NewLine +
                 $"{ExitCommand,-CommandsLength}Closes app." + Environment.NewLine +
                 $"{ShowstatusCommand,-CommandsLength}Showes table with current statuses of all hangars." + Environment.NewLine +
                 $"{StoreCommand + " <N>",-CommandsLength}Places N containers in warehouse. N is natural number." + Environment.NewLine +
                 $"{FreeCommand + " <N> <H_ID>",-CommandsLength}Takes away N containers from hangar H_ID. N is natural number.";
-            const int ColumnWidth = 18;
-            string ColumnHeader = $"{"Site ID",-ColumnWidth}{"Hangar ID",-ColumnWidth}{"Hangar capacity",-ColumnWidth}{"Stored containers",-ColumnWidth}";
             #endregion
 
-            DataService.DataServiceClient wm = new DataService.DataServiceClient(); //Ссылка на службу для работы с бд
-            
             string command = "";
             bool needEnterSuggestion = true;
+            bool success;
+            string exceptionString;
 
             while (true)
             {
@@ -77,13 +53,9 @@ namespace Warehouse.ConsoleClient
                 //SHOWSTATUS – отображение отформатированной таблицы загруженности всех ангаров на всех площадках склада
                 else if (command.ToLower() == ShowstatusCommand)
                 {
-                    Console.WriteLine(ColumnHeader);
-                    foreach (var site in wm.GetAllSites())
+                    using (DataService.DataServiceClient wm = new DataService.DataServiceClient())
                     {
-                        foreach (var hangar in wm.GetAllHangars(site.Id))
-                        {
-                            Console.WriteLine($"{hangar.SiteId,-ColumnWidth}{hangar.Id,-ColumnWidth}{hangar.Capacity,-ColumnWidth}{hangar.Fullness,-ColumnWidth}");
-                        }
+                        Console.WriteLine(wm.ShowStatus(out success, out exceptionString));
                     }
                 }
                 //STORE <N> – разместить N контейнеров на складе, N – натуральное число
@@ -94,27 +66,15 @@ namespace Warehouse.ConsoleClient
                     string[] comArgs = command.Split(' ');
                     if (comArgs.Length == 2 && ushort.TryParse(comArgs[1], out N))
                     {
-                        int freePlaces = wm.GetFreePlacesCount();
-                        if (freePlaces >= N)
+                        using (DataService.DataServiceClient wm = new DataService.DataServiceClient())
                         {
-                            N = PlaceContainers(N, wm);
-                            N = PlaceContainers(N, wm, true);
-                            Console.WriteLine(ContainersPlacedMessage);
-                        }
-                        else if (freePlaces == 0)
-                        {
-                            Console.WriteLine(WarehouseIsFilledMessage);
-                        }
-                        else
-                        {
-                            Console.WriteLine(CanNotPlaceContainersMessage);
+                            Console.WriteLine(wm.PlaceContainers(N, out success, out exceptionString));
                         }
                     }
                     else
                     {
                         valid = false;
                     }
-
                     if (!valid)
                     {
                         Console.WriteLine(InvalidArgumentsMessage);
@@ -126,24 +86,17 @@ namespace Warehouse.ConsoleClient
                     bool valid = true;
                     ushort N;
                     string[] comArgs = command.Split(' ');
-                    if (comArgs.Length == 3 && ushort.TryParse(comArgs[1], out N) && wm.HangarExists(comArgs[2]))
+                    if (comArgs.Length == 3 && ushort.TryParse(comArgs[1], out N))
                     {
-                        DataService.Hangar hangar = wm.GetHangar(comArgs[2]);
-                        if (hangar.Fullness < N)
+                        using (DataService.DataServiceClient wm = new DataService.DataServiceClient())
                         {
-                            Console.WriteLine(NotEnoughContainersMessage);
-                        }
-                        else
-                        {
-                            wm.ModifyHangar(hangar.Id, -N);
-                            Console.WriteLine(ContainersTakenAwayMessage);
+                            Console.WriteLine(wm.FreeContainers(N, comArgs[2], out success, out exceptionString));
                         }
                     }
                     else
                     {
                         valid = false;
                     }
-
                     if (!valid)
                     {
                         Console.WriteLine(InvalidArgumentsMessage);

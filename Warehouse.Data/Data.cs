@@ -7,92 +7,119 @@ namespace Warehouse.Data
 {
     public class DataFunctions
     {
-        public delegate void LogExceptionFunction(string type, string errorText, string callStack, string time);
+        public delegate void LogExceptionFunction(Exception ex, DateTime time);
 
-        public static List<Site> GetSites(bool empty, bool full, LogExceptionFunction LogException)
+        public static List<Site> GetSites(bool empty, bool full, LogExceptionFunction LogException, out bool success, out string exceptionString)
         {
             try
             {
                 using (WarehouseContext db = new WarehouseContext())
                 {
+                    success = true;
+                    exceptionString = null;
                     return db.sites.Where(e => (empty || !e.empty) && (full || e.capacity != 0)).ToList();
                 }
             }
             catch (Exception e)
             {
-                LogException(e.GetType().ToString(), e.Message, e.StackTrace, DateTime.Now.ToString());
+                LogException(e, DateTime.UtcNow);
+                success = false;
+                exceptionString = e.ToString();
                 return null;
             }
         }
 
-        public static Hangar GetHangar(string id, LogExceptionFunction LogException)
+        public static Hangar GetHangar(string id, LogExceptionFunction LogException, out bool exist, out bool success, out string exceptionString)
         {
             try
             {
                 using (WarehouseContext db = new WarehouseContext())
                 {
-                    return db.hangars.Where(e => e.id == id).FirstOrDefault();
+                    exist = db.hangars.Any(e => e.id == id);
+                    success = true;
+                    exceptionString = null;
+                    return db.hangars.FirstOrDefault(e => e.id == id);
                 }
             }
             catch (Exception e)
             {
-                LogException(e.GetType().ToString(), e.Message, e.StackTrace, DateTime.Now.ToString());
+                LogException(e, DateTime.UtcNow);
+                exist = success = false;
+                exceptionString = e.ToString();
                 return null;
             }
         }
 
-        public static List<Hangar> GetHangars(string siteId, bool empty, bool full, LogExceptionFunction LogException)
+        public static List<Hangar> GetHangars(string siteId, bool empty, bool full, LogExceptionFunction LogException, out bool success, out string exceptionString)
         {
             try
             {
                 using (WarehouseContext db = new WarehouseContext())
                 {
+                    success = true;
+                    exceptionString = null;
                     return db.hangars.Where(e => e.site_id == siteId && (empty || e.fullness != 0) && (full || e.capacity != e.fullness)).ToList();
                 }
             }
             catch (Exception e)
             {
-                LogException(e.GetType().ToString(), e.Message, e.StackTrace, DateTime.Now.ToString());
+                LogException(e, DateTime.UtcNow);
+                success = false;
+                exceptionString = e.ToString();
                 return null;
             }
         }
 
-        public static bool ModifyHangar(string id, int N, LogExceptionFunction LogException)
+        public static bool ModifyHangar(string id, int N, LogExceptionFunction LogException, out bool success, out string exceptionString)
         {
             try
             {
                 using (WarehouseContext db = new WarehouseContext())
                 {
-                    Hangar hangar = GetHangar(id, LogException);
-                    if (hangar == null)
+                    bool exist, hSuccess;
+                    string hExcStr;
+                    Hangar hangar = GetHangar(id, LogException, out exist, out hSuccess, out hExcStr);
+                    if (!hSuccess)
                     {
+                        success = false;
+                        exceptionString = hExcStr;
                         return false;
                     }
-                    int newFullness = hangar.fullness + N;
-                    if (newFullness >= 0 && newFullness <= hangar.capacity)
+                    success = true;
+                    exceptionString = null;
+                    if (exist)
                     {
-                        db.hangars.Where(e => e.id == id).FirstOrDefault().fullness = newFullness;
-                        db.sites.FirstOrDefault(e => e.id == hangar.site_id).capacity -= N;
-                        if (newFullness == 0)
+                        int newFullness = hangar.fullness + N;
+                        if (newFullness >= 0 && newFullness <= hangar.capacity)
                         {
-                            if (!db.hangars.Any(e => e.site_id == id && e.fullness > 0))
+                            db.hangars.FirstOrDefault(e => e.id == id).fullness = newFullness;
+                            if (db.sites.Any(e => e.id == hangar.site_id))
                             {
-                                db.sites.FirstOrDefault(e => e.id == hangar.site_id).empty = true;
+                                db.sites.FirstOrDefault(e => e.id == hangar.site_id).capacity -= N;
+                                if (newFullness == 0)
+                                {
+                                    if (!db.hangars.Any(e => e.site_id == id && e.fullness > 0))
+                                    {
+                                        db.sites.FirstOrDefault(e => e.id == hangar.site_id).empty = true;
+                                    }
+                                }
+                                else if (db.sites.FirstOrDefault(e => e.id == hangar.site_id).empty)
+                                {
+                                    db.sites.FirstOrDefault(e => e.id == hangar.site_id).empty = false;
+                                }
                             }
+                            db.SaveChanges();
+                            return true;
                         }
-                        else if (db.sites.FirstOrDefault(e => e.id == hangar.site_id).empty)
-                        {
-                            db.sites.FirstOrDefault(e => e.id == hangar.site_id).empty = false;
-                        }
-                        db.SaveChanges();
-                        return true;
                     }
                     return false;
                 }
             }
             catch (Exception e)
             {
-                LogException(e.GetType().ToString(), e.Message, e.StackTrace, DateTime.Now.ToString());
+                LogException(e, DateTime.UtcNow);
+                success = false;
+                exceptionString = e.ToString();
                 return false;
             }
         }

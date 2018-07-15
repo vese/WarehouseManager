@@ -1,98 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DataService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DataService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost/DataService/DataService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost/DataService/DataService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost/DataService/DataService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataService" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IDataService_GetAllSites_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllSites" />
+  <wsdl:message name="IDataService_ShowStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ShowStatus" />
   </wsdl:message>
-  <wsdl:message name="IDataService_GetAllSites_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllSitesResponse" />
+  <wsdl:message name="IDataService_ShowStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ShowStatusResponse" />
   </wsdl:message>
-  <wsdl:message name="IDataService_GetSites_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetSites" />
+  <wsdl:message name="IDataService_PlaceContainers_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlaceContainers" />
   </wsdl:message>
-  <wsdl:message name="IDataService_GetSites_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetSitesResponse" />
+  <wsdl:message name="IDataService_PlaceContainers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlaceContainersResponse" />
   </wsdl:message>
-  <wsdl:message name="IDataService_HangarExists_InputMessage">
-    <wsdl:part name="parameters" element="tns:HangarExists" />
+  <wsdl:message name="IDataService_FreeContainers_InputMessage">
+    <wsdl:part name="parameters" element="tns:FreeContainers" />
   </wsdl:message>
-  <wsdl:message name="IDataService_HangarExists_OutputMessage">
-    <wsdl:part name="parameters" element="tns:HangarExistsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IDataService_GetHangar_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetHangar" />
-  </wsdl:message>
-  <wsdl:message name="IDataService_GetHangar_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetHangarResponse" />
-  </wsdl:message>
-  <wsdl:message name="IDataService_GetAllHangars_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllHangars" />
-  </wsdl:message>
-  <wsdl:message name="IDataService_GetAllHangars_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllHangarsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IDataService_GetHangars_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetHangars" />
-  </wsdl:message>
-  <wsdl:message name="IDataService_GetHangars_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetHangarsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IDataService_ModifyHangar_InputMessage">
-    <wsdl:part name="parameters" element="tns:ModifyHangar" />
-  </wsdl:message>
-  <wsdl:message name="IDataService_ModifyHangar_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ModifyHangarResponse" />
-  </wsdl:message>
-  <wsdl:message name="IDataService_GetFreePlacesCount_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetFreePlacesCount" />
-  </wsdl:message>
-  <wsdl:message name="IDataService_GetFreePlacesCount_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetFreePlacesCountResponse" />
+  <wsdl:message name="IDataService_FreeContainers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FreeContainersResponse" />
   </wsdl:message>
   <wsdl:portType name="IDataService">
-    <wsdl:operation name="GetAllSites">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetAllSites" message="tns:IDataService_GetAllSites_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetAllSitesResponse" message="tns:IDataService_GetAllSites_OutputMessage" />
+    <wsdl:operation name="ShowStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/ShowStatus" message="tns:IDataService_ShowStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/ShowStatusResponse" message="tns:IDataService_ShowStatus_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetSites">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetSites" message="tns:IDataService_GetSites_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetSitesResponse" message="tns:IDataService_GetSites_OutputMessage" />
+    <wsdl:operation name="PlaceContainers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/PlaceContainers" message="tns:IDataService_PlaceContainers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/PlaceContainersResponse" message="tns:IDataService_PlaceContainers_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="HangarExists">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/HangarExists" message="tns:IDataService_HangarExists_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/HangarExistsResponse" message="tns:IDataService_HangarExists_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetHangar">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetHangar" message="tns:IDataService_GetHangar_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetHangarResponse" message="tns:IDataService_GetHangar_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAllHangars">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetAllHangars" message="tns:IDataService_GetAllHangars_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetAllHangarsResponse" message="tns:IDataService_GetAllHangars_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetHangars">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetHangars" message="tns:IDataService_GetHangars_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetHangarsResponse" message="tns:IDataService_GetHangars_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="ModifyHangar">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/ModifyHangar" message="tns:IDataService_ModifyHangar_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/ModifyHangarResponse" message="tns:IDataService_ModifyHangar_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetFreePlacesCount">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/GetFreePlacesCount" message="tns:IDataService_GetFreePlacesCount_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/GetFreePlacesCountResponse" message="tns:IDataService_GetFreePlacesCount_OutputMessage" />
+    <wsdl:operation name="FreeContainers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDataService/FreeContainers" message="tns:IDataService_FreeContainers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDataService/FreeContainersResponse" message="tns:IDataService_FreeContainers_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDataService" type="tns:IDataService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetAllSites">
-      <soap:operation soapAction="http://tempuri.org/IDataService/GetAllSites" style="document" />
+    <wsdl:operation name="ShowStatus">
+      <soap:operation soapAction="http://tempuri.org/IDataService/ShowStatus" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -100,8 +49,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetSites">
-      <soap:operation soapAction="http://tempuri.org/IDataService/GetSites" style="document" />
+    <wsdl:operation name="PlaceContainers">
+      <soap:operation soapAction="http://tempuri.org/IDataService/PlaceContainers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -109,53 +58,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="HangarExists">
-      <soap:operation soapAction="http://tempuri.org/IDataService/HangarExists" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetHangar">
-      <soap:operation soapAction="http://tempuri.org/IDataService/GetHangar" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetAllHangars">
-      <soap:operation soapAction="http://tempuri.org/IDataService/GetAllHangars" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetHangars">
-      <soap:operation soapAction="http://tempuri.org/IDataService/GetHangars" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="ModifyHangar">
-      <soap:operation soapAction="http://tempuri.org/IDataService/ModifyHangar" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetFreePlacesCount">
-      <soap:operation soapAction="http://tempuri.org/IDataService/GetFreePlacesCount" style="document" />
+    <wsdl:operation name="FreeContainers">
+      <soap:operation soapAction="http://tempuri.org/IDataService/FreeContainers" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

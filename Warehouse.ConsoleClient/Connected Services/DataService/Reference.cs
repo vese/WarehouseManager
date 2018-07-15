@@ -9,231 +9,149 @@
 //------------------------------------------------------------------------------
 
 namespace Warehouse.ConsoleClient.DataService {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Site", Namespace="http://schemas.datacontract.org/2004/07/DataService")]
-    [System.SerializableAttribute()]
-    public partial class Site : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CapacityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool EmptyField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Capacity {
-            get {
-                return this.CapacityField;
-            }
-            set {
-                if ((this.CapacityField.Equals(value) != true)) {
-                    this.CapacityField = value;
-                    this.RaisePropertyChanged("Capacity");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Empty {
-            get {
-                return this.EmptyField;
-            }
-            set {
-                if ((this.EmptyField.Equals(value) != true)) {
-                    this.EmptyField = value;
-                    this.RaisePropertyChanged("Empty");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdField, value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Hangar", Namespace="http://schemas.datacontract.org/2004/07/DataService")]
-    [System.SerializableAttribute()]
-    public partial class Hangar : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CapacityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int FullnessField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SiteIdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Capacity {
-            get {
-                return this.CapacityField;
-            }
-            set {
-                if ((this.CapacityField.Equals(value) != true)) {
-                    this.CapacityField = value;
-                    this.RaisePropertyChanged("Capacity");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Fullness {
-            get {
-                return this.FullnessField;
-            }
-            set {
-                if ((this.FullnessField.Equals(value) != true)) {
-                    this.FullnessField = value;
-                    this.RaisePropertyChanged("Fullness");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdField, value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SiteId {
-            get {
-                return this.SiteIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SiteIdField, value) != true)) {
-                    this.SiteIdField = value;
-                    this.RaisePropertyChanged("SiteId");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="DataService.IDataService")]
     public interface IDataService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetAllSites", ReplyAction="http://tempuri.org/IDataService/GetAllSitesResponse")]
-        Warehouse.ConsoleClient.DataService.Site[] GetAllSites();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/ShowStatus", ReplyAction="http://tempuri.org/IDataService/ShowStatusResponse")]
+        Warehouse.ConsoleClient.DataService.ShowStatusResponse ShowStatus(Warehouse.ConsoleClient.DataService.ShowStatusRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetAllSites", ReplyAction="http://tempuri.org/IDataService/GetAllSitesResponse")]
-        System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Site[]> GetAllSitesAsync();
+        // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/ShowStatus", ReplyAction="http://tempuri.org/IDataService/ShowStatusResponse")]
+        System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.ShowStatusResponse> ShowStatusAsync(Warehouse.ConsoleClient.DataService.ShowStatusRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetSites", ReplyAction="http://tempuri.org/IDataService/GetSitesResponse")]
-        Warehouse.ConsoleClient.DataService.Site[] GetSites(bool empty, bool full);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/PlaceContainers", ReplyAction="http://tempuri.org/IDataService/PlaceContainersResponse")]
+        Warehouse.ConsoleClient.DataService.PlaceContainersResponse PlaceContainers(Warehouse.ConsoleClient.DataService.PlaceContainersRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetSites", ReplyAction="http://tempuri.org/IDataService/GetSitesResponse")]
-        System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Site[]> GetSitesAsync(bool empty, bool full);
+        // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/PlaceContainers", ReplyAction="http://tempuri.org/IDataService/PlaceContainersResponse")]
+        System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.PlaceContainersResponse> PlaceContainersAsync(Warehouse.ConsoleClient.DataService.PlaceContainersRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/HangarExists", ReplyAction="http://tempuri.org/IDataService/HangarExistsResponse")]
-        bool HangarExists(string id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/FreeContainers", ReplyAction="http://tempuri.org/IDataService/FreeContainersResponse")]
+        Warehouse.ConsoleClient.DataService.FreeContainersResponse FreeContainers(Warehouse.ConsoleClient.DataService.FreeContainersRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/HangarExists", ReplyAction="http://tempuri.org/IDataService/HangarExistsResponse")]
-        System.Threading.Tasks.Task<bool> HangarExistsAsync(string id);
+        // CODEGEN: Идет формирование контракта на сообщение, так как операция может иметь много возвращаемых значений.
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/FreeContainers", ReplyAction="http://tempuri.org/IDataService/FreeContainersResponse")]
+        System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.FreeContainersResponse> FreeContainersAsync(Warehouse.ConsoleClient.DataService.FreeContainersRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ShowStatus", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ShowStatusRequest {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetHangar", ReplyAction="http://tempuri.org/IDataService/GetHangarResponse")]
-        Warehouse.ConsoleClient.DataService.Hangar GetHangar(string hangarId);
+        public ShowStatusRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ShowStatusResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class ShowStatusResponse {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetHangar", ReplyAction="http://tempuri.org/IDataService/GetHangarResponse")]
-        System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Hangar> GetHangarAsync(string hangarId);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string ShowStatusResult;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetAllHangars", ReplyAction="http://tempuri.org/IDataService/GetAllHangarsResponse")]
-        Warehouse.ConsoleClient.DataService.Hangar[] GetAllHangars(string siteId);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public bool success;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetAllHangars", ReplyAction="http://tempuri.org/IDataService/GetAllHangarsResponse")]
-        System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Hangar[]> GetAllHangarsAsync(string siteId);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string exceptionString;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetHangars", ReplyAction="http://tempuri.org/IDataService/GetHangarsResponse")]
-        Warehouse.ConsoleClient.DataService.Hangar[] GetHangars(string siteId, bool empty, bool full);
+        public ShowStatusResponse() {
+        }
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetHangars", ReplyAction="http://tempuri.org/IDataService/GetHangarsResponse")]
-        System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Hangar[]> GetHangarsAsync(string siteId, bool empty, bool full);
+        public ShowStatusResponse(string ShowStatusResult, bool success, string exceptionString) {
+            this.ShowStatusResult = ShowStatusResult;
+            this.success = success;
+            this.exceptionString = exceptionString;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="PlaceContainers", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class PlaceContainersRequest {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/ModifyHangar", ReplyAction="http://tempuri.org/IDataService/ModifyHangarResponse")]
-        bool ModifyHangar(string id, int N);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public ushort N;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/ModifyHangar", ReplyAction="http://tempuri.org/IDataService/ModifyHangarResponse")]
-        System.Threading.Tasks.Task<bool> ModifyHangarAsync(string id, int N);
+        public PlaceContainersRequest() {
+        }
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetFreePlacesCount", ReplyAction="http://tempuri.org/IDataService/GetFreePlacesCountResponse")]
-        int GetFreePlacesCount();
+        public PlaceContainersRequest(ushort N) {
+            this.N = N;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="PlaceContainersResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class PlaceContainersResponse {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDataService/GetFreePlacesCount", ReplyAction="http://tempuri.org/IDataService/GetFreePlacesCountResponse")]
-        System.Threading.Tasks.Task<int> GetFreePlacesCountAsync();
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string PlaceContainersResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public bool success;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string exceptionString;
+        
+        public PlaceContainersResponse() {
+        }
+        
+        public PlaceContainersResponse(string PlaceContainersResult, bool success, string exceptionString) {
+            this.PlaceContainersResult = PlaceContainersResult;
+            this.success = success;
+            this.exceptionString = exceptionString;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="FreeContainers", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class FreeContainersRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public ushort N;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public string hangarId;
+        
+        public FreeContainersRequest() {
+        }
+        
+        public FreeContainersRequest(ushort N, string hangarId) {
+            this.N = N;
+            this.hangarId = hangarId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="FreeContainersResponse", WrapperNamespace="http://tempuri.org/", IsWrapped=true)]
+    public partial class FreeContainersResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=0)]
+        public string FreeContainersResult;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=1)]
+        public bool success;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://tempuri.org/", Order=2)]
+        public string exceptionString;
+        
+        public FreeContainersResponse() {
+        }
+        
+        public FreeContainersResponse(string FreeContainersResult, bool success, string exceptionString) {
+            this.FreeContainersResult = FreeContainersResult;
+            this.success = success;
+            this.exceptionString = exceptionString;
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -263,68 +181,58 @@ namespace Warehouse.ConsoleClient.DataService {
                 base(binding, remoteAddress) {
         }
         
-        public Warehouse.ConsoleClient.DataService.Site[] GetAllSites() {
-            return base.Channel.GetAllSites();
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Warehouse.ConsoleClient.DataService.ShowStatusResponse Warehouse.ConsoleClient.DataService.IDataService.ShowStatus(Warehouse.ConsoleClient.DataService.ShowStatusRequest request) {
+            return base.Channel.ShowStatus(request);
         }
         
-        public System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Site[]> GetAllSitesAsync() {
-            return base.Channel.GetAllSitesAsync();
+        public string ShowStatus(out bool success, out string exceptionString) {
+            Warehouse.ConsoleClient.DataService.ShowStatusRequest inValue = new Warehouse.ConsoleClient.DataService.ShowStatusRequest();
+            Warehouse.ConsoleClient.DataService.ShowStatusResponse retVal = ((Warehouse.ConsoleClient.DataService.IDataService)(this)).ShowStatus(inValue);
+            success = retVal.success;
+            exceptionString = retVal.exceptionString;
+            return retVal.ShowStatusResult;
         }
         
-        public Warehouse.ConsoleClient.DataService.Site[] GetSites(bool empty, bool full) {
-            return base.Channel.GetSites(empty, full);
+        public System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.ShowStatusResponse> ShowStatusAsync(Warehouse.ConsoleClient.DataService.ShowStatusRequest request) {
+            return base.Channel.ShowStatusAsync(request);
         }
         
-        public System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Site[]> GetSitesAsync(bool empty, bool full) {
-            return base.Channel.GetSitesAsync(empty, full);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Warehouse.ConsoleClient.DataService.PlaceContainersResponse Warehouse.ConsoleClient.DataService.IDataService.PlaceContainers(Warehouse.ConsoleClient.DataService.PlaceContainersRequest request) {
+            return base.Channel.PlaceContainers(request);
         }
         
-        public bool HangarExists(string id) {
-            return base.Channel.HangarExists(id);
+        public string PlaceContainers(ushort N, out bool success, out string exceptionString) {
+            Warehouse.ConsoleClient.DataService.PlaceContainersRequest inValue = new Warehouse.ConsoleClient.DataService.PlaceContainersRequest();
+            inValue.N = N;
+            Warehouse.ConsoleClient.DataService.PlaceContainersResponse retVal = ((Warehouse.ConsoleClient.DataService.IDataService)(this)).PlaceContainers(inValue);
+            success = retVal.success;
+            exceptionString = retVal.exceptionString;
+            return retVal.PlaceContainersResult;
         }
         
-        public System.Threading.Tasks.Task<bool> HangarExistsAsync(string id) {
-            return base.Channel.HangarExistsAsync(id);
+        public System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.PlaceContainersResponse> PlaceContainersAsync(Warehouse.ConsoleClient.DataService.PlaceContainersRequest request) {
+            return base.Channel.PlaceContainersAsync(request);
         }
         
-        public Warehouse.ConsoleClient.DataService.Hangar GetHangar(string hangarId) {
-            return base.Channel.GetHangar(hangarId);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Warehouse.ConsoleClient.DataService.FreeContainersResponse Warehouse.ConsoleClient.DataService.IDataService.FreeContainers(Warehouse.ConsoleClient.DataService.FreeContainersRequest request) {
+            return base.Channel.FreeContainers(request);
         }
         
-        public System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Hangar> GetHangarAsync(string hangarId) {
-            return base.Channel.GetHangarAsync(hangarId);
+        public string FreeContainers(ushort N, string hangarId, out bool success, out string exceptionString) {
+            Warehouse.ConsoleClient.DataService.FreeContainersRequest inValue = new Warehouse.ConsoleClient.DataService.FreeContainersRequest();
+            inValue.N = N;
+            inValue.hangarId = hangarId;
+            Warehouse.ConsoleClient.DataService.FreeContainersResponse retVal = ((Warehouse.ConsoleClient.DataService.IDataService)(this)).FreeContainers(inValue);
+            success = retVal.success;
+            exceptionString = retVal.exceptionString;
+            return retVal.FreeContainersResult;
         }
         
-        public Warehouse.ConsoleClient.DataService.Hangar[] GetAllHangars(string siteId) {
-            return base.Channel.GetAllHangars(siteId);
-        }
-        
-        public System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Hangar[]> GetAllHangarsAsync(string siteId) {
-            return base.Channel.GetAllHangarsAsync(siteId);
-        }
-        
-        public Warehouse.ConsoleClient.DataService.Hangar[] GetHangars(string siteId, bool empty, bool full) {
-            return base.Channel.GetHangars(siteId, empty, full);
-        }
-        
-        public System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.Hangar[]> GetHangarsAsync(string siteId, bool empty, bool full) {
-            return base.Channel.GetHangarsAsync(siteId, empty, full);
-        }
-        
-        public bool ModifyHangar(string id, int N) {
-            return base.Channel.ModifyHangar(id, N);
-        }
-        
-        public System.Threading.Tasks.Task<bool> ModifyHangarAsync(string id, int N) {
-            return base.Channel.ModifyHangarAsync(id, N);
-        }
-        
-        public int GetFreePlacesCount() {
-            return base.Channel.GetFreePlacesCount();
-        }
-        
-        public System.Threading.Tasks.Task<int> GetFreePlacesCountAsync() {
-            return base.Channel.GetFreePlacesCountAsync();
+        public System.Threading.Tasks.Task<Warehouse.ConsoleClient.DataService.FreeContainersResponse> FreeContainersAsync(Warehouse.ConsoleClient.DataService.FreeContainersRequest request) {
+            return base.Channel.FreeContainersAsync(request);
         }
     }
 }

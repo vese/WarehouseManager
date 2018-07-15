@@ -60,13 +60,13 @@
     <None Include="Connected Services\DataService\DataService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\DataService\DataService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\DataService\Warehouse.ConsoleClient.DataService.Hangar.datasource">
+    <None Include="Connected Services\DataService\Warehouse.ConsoleClient.DataService.FreeContainersResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\DataService\Warehouse.ConsoleClient.DataService.Site.datasource">
+    <None Include="Connected Services\DataService\Warehouse.ConsoleClient.DataService.PlaceContainersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\DataService\Warehouse.ConsoleClient.DataService.ShowStatusResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
   </ItemGroup>

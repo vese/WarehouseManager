@@ -1,115 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost/DataService/DataService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataService" />
-  <xs:element name="GetAllSites">
+  <xs:element name="ShowStatus">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllSitesResponse">
+  <xs:element name="ShowStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DataService" minOccurs="0" name="GetAllSitesResult" nillable="true" type="q1:ArrayOfSite" />
+        <xs:element minOccurs="0" name="ShowStatusResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="success" type="xs:boolean" />
+        <xs:element minOccurs="0" name="exceptionString" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetSites">
+  <xs:element name="PlaceContainers">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="empty" type="xs:boolean" />
-        <xs:element minOccurs="0" name="full" type="xs:boolean" />
+        <xs:element minOccurs="0" name="N" type="xs:unsignedShort" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetSitesResponse">
+  <xs:element name="PlaceContainersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DataService" minOccurs="0" name="GetSitesResult" nillable="true" type="q2:ArrayOfSite" />
+        <xs:element minOccurs="0" name="PlaceContainersResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="success" type="xs:boolean" />
+        <xs:element minOccurs="0" name="exceptionString" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="HangarExists">
+  <xs:element name="FreeContainers">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="HangarExistsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="HangarExistsResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetHangar">
-    <xs:complexType>
-      <xs:sequence>
+        <xs:element minOccurs="0" name="N" type="xs:unsignedShort" />
         <xs:element minOccurs="0" name="hangarId" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetHangarResponse">
+  <xs:element name="FreeContainersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DataService" minOccurs="0" name="GetHangarResult" nillable="true" type="q3:Hangar" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllHangars">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="siteId" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetAllHangarsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DataService" minOccurs="0" name="GetAllHangarsResult" nillable="true" type="q4:ArrayOfHangar" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetHangars">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="siteId" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="empty" type="xs:boolean" />
-        <xs:element minOccurs="0" name="full" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetHangarsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DataService" minOccurs="0" name="GetHangarsResult" nillable="true" type="q5:ArrayOfHangar" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ModifyHangar">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="N" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ModifyHangarResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ModifyHangarResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetFreePlacesCount">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetFreePlacesCountResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetFreePlacesCountResult" type="xs:int" />
+        <xs:element minOccurs="0" name="FreeContainersResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="success" type="xs:boolean" />
+        <xs:element minOccurs="0" name="exceptionString" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
