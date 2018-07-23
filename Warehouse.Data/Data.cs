@@ -7,9 +7,7 @@ namespace Warehouse.Data
 {
     public class DataFunctions
     {
-        public delegate void LogExceptionFunction(Exception ex, DateTime time);
-
-        public static List<Site> GetSites(bool empty, bool full, LogExceptionFunction LogException, out bool success, out string exceptionString)
+        public static List<Site> GetSites(bool empty, bool full, out bool success, out string exceptionString)
         {
             try
             {
@@ -22,14 +20,14 @@ namespace Warehouse.Data
             }
             catch (Exception e)
             {
-                LogException(e, DateTime.UtcNow);
+                ExceptionLogger.Instance.LogException(e.ToString(), DateTime.UtcNow);
                 success = false;
                 exceptionString = e.ToString();
                 return null;
             }
         }
 
-        public static Hangar GetHangar(string id, LogExceptionFunction LogException, out bool exist, out bool success, out string exceptionString)
+        public static Hangar GetHangar(string id, out bool exist, out bool success, out string exceptionString)
         {
             try
             {
@@ -43,14 +41,14 @@ namespace Warehouse.Data
             }
             catch (Exception e)
             {
-                LogException(e, DateTime.UtcNow);
+                ExceptionLogger.Instance.LogException(e.ToString(), DateTime.UtcNow);
                 exist = success = false;
                 exceptionString = e.ToString();
                 return null;
             }
         }
 
-        public static List<Hangar> GetHangars(string siteId, bool empty, bool full, LogExceptionFunction LogException, out bool success, out string exceptionString)
+        public static List<Hangar> GetHangars(string siteId, bool empty, bool full, out bool success, out string exceptionString)
         {
             try
             {
@@ -63,14 +61,14 @@ namespace Warehouse.Data
             }
             catch (Exception e)
             {
-                LogException(e, DateTime.UtcNow);
+                ExceptionLogger.Instance.LogException(e.ToString(), DateTime.UtcNow);
                 success = false;
                 exceptionString = e.ToString();
                 return null;
             }
         }
 
-        public static bool ModifyHangar(string id, int N, LogExceptionFunction LogException, out bool success, out string exceptionString)
+        public static bool ModifyHangar(string id, int N, out bool success, out string exceptionString)
         {
             try
             {
@@ -78,7 +76,7 @@ namespace Warehouse.Data
                 {
                     bool exist, hSuccess;
                     string hExcStr;
-                    Hangar hangar = GetHangar(id, LogException, out exist, out hSuccess, out hExcStr);
+                    Hangar hangar = GetHangar(id, out exist, out hSuccess, out hExcStr);
                     if (!hSuccess)
                     {
                         success = false;
@@ -117,7 +115,7 @@ namespace Warehouse.Data
             }
             catch (Exception e)
             {
-                LogException(e, DateTime.UtcNow);
+                ExceptionLogger.Instance.LogException(e.ToString(), DateTime.UtcNow);
                 success = false;
                 exceptionString = e.ToString();
                 return false;

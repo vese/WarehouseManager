@@ -2,9 +2,6 @@
 {
     internal static class Settings
     {
-        #region Exception Logging
-        internal static string LogFileName = "WarehouseLog.txt";
-        #endregion
         #region ShowStatus
         internal const int ColumnWidth = 18;
         internal static string[] TableHeaders = { "Site ID", "Hangar ID", "Hangar capacity", "Stored containers" };
